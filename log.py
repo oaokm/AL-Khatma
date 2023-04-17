@@ -1,5 +1,8 @@
 from datetime import datetime as dt
-import AL_Khatma
+try:
+    import AL_Khatma
+except ModuleNotFoundError:
+    import __init__ as AL_Khatma
 def nowing():
     return dt.now().timestamp()
 

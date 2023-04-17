@@ -21,14 +21,15 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 '''
-
-from AL_Khatma.log import log
 import os
 
 __version__   = '1.0.0'
 __main_path__ = os.path.dirname(__file__)
-
 os.chdir(path=__main_path__)
+try:
+    from AL_Khatma.log import log
+except ModuleNotFoundError:
+    from log import log
 
 class ALKhatma:
     def __init__ (self):
