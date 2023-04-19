@@ -98,7 +98,7 @@ class Quran:
                                 continue
 
                     #* طباعة تقرير مُنسق مع إرجاع قينتين للعمليتين السابقتين
-                    if verses_number != [] or orderly:
+                    if orderly:
                         txt = ('results'.upper(), 'verses'.upper())
                         print(f'\n\n\n{txt[0]:.^50}\n\n\n')
                         print(json.dumps(results, indent=4, ensure_ascii=False))
@@ -121,7 +121,12 @@ class Quran:
 
 
     #* هذا للبحث عن كلمة أو مجموعة كلمات في القرآن
-    def searching(self, text:str, search_second_lang=False, print_report=False):
+    def searching(
+            self, 
+            text:str, 
+            search_second_lang=False, 
+            print_report=False
+            ):
         """
         searching(func): هي دالة للبحث بين السطور القرآنية
         text(str): الكلمة المراد بحثها
@@ -140,7 +145,7 @@ class Quran:
             f"True"
             ).write_message()
             end = perf_counter()
-            #* يكون جميع النص lower
+            # * يكون جميع النص lower
             text    = text.lower()
             #* لتحزين النتائج
             results = list()
@@ -160,7 +165,7 @@ class Quran:
             for i in range(len(self.quran)):
                 #? يتم تطبيق هذا الأمر في حالة تفعيل خيار search_my_langsearch_my_lang
                 if search_second_lang:
-                    verses_text = self.quran[i][lang_ues]
+                    verses_text = self.quran[i][lang_ues].lower()
                     search      = verses_text.find(text)
                 #? في حال عدم تفعيل search_my_lang فإنهُ يتم تنفيذ الأمر
                 else:
@@ -174,7 +179,7 @@ class Quran:
                     continue
             #* إرجاع قيمة البحث
             end = perf_counter()
-            if print_report: print(f"[REPORT]\nRuning Time: {end-start}\nResult Search: {json.dumps(results, indent=4, ensure_ascii=False)}\nCount Search: {len(results)}")
+            if print_report: print(f"[REPORT]\nRuning Time: {end-start}\nCount Search: {len(results)}\nResult Search: {json.dumps(results, indent=4, ensure_ascii=False)}")
             return results
         
         else:

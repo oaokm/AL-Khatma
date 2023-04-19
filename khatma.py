@@ -106,7 +106,7 @@ class khatma:
                     page_per_day.append(self.quran[stop_id:])
                 else:
                     continue
-            report = f"[REPORT KHATMA]\nDays: {self.days}\nReading Rate: {int(sum(Fdays_pages)/len(Fdays_pages))} (Page/Day)\nWeerd: {Fdays_pages}\nNumber of Werrd: {len(page_per_day)}"
+            report = f"[REPORT KHATMA]\nDays: {self.days}\nReading Rate: {int(sum(self.werrd_page)/len(self.werrd_page))} (Page/Day)\nWeerd: {self.werrd_page}\nNumber of Werrd: {len(page_per_day)}"
             if report: print(report)
             log(
                 f"{__file__} > khatma > Khatma_page > (werrd) | Status",
