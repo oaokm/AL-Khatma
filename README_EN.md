@@ -3,9 +3,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/oaokm/AL-Khatma/README.md">Arabic</a>
+  <a href="https://github.com/oaokm/AL-Khatma/blob/main/README.md">Arabic</a>
   &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/oaokm/AL-Khatma/README_EN.md">English</a>
+  <a href="https://github.com/oaokm/AL-Khatma/blob/main/README_EN.md">English</a>
 </p>
 
 ## Coming Soon ....
