@@ -19,7 +19,7 @@
   &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#الترخيص">الترخيص</a>
   &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/oaokm/AL-Khatma/UPDATE.md">التحديثات</a>
+  <a href="https://github.com/oaokm/AL-Khatma/blob/main/UPDATE.md">التحديثات</a>
 </p>
 
 ![GitHub](https://img.shields.io/github/license/oaokm/AL-Khatma) | ![](https://img.shields.io/badge/Programing%20Language-Python_3_and_top-orange)
