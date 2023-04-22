@@ -1,5 +1,5 @@
 import AL_Khatma
-from AL_Khatma.log import log
+from log import log
 import json
 import requests
 import os

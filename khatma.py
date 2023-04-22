@@ -1,5 +1,5 @@
-from AL_Khatma.quran import Quran
-from AL_Khatma.log import log
+from quran import Quran
+from log import log
 from tqdm import tqdm
 
 class khatma:
