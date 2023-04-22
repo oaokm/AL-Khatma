@@ -79,11 +79,11 @@ S git clone https://github.com/oaokm/AL-Khatma
 ### التحميل عن طريق **pypi**
 
 ```sh
-$ pip install AL-Khatma
+$ pip install AL-Khatma-lib
 ```
 **أو**
 ```sh
-$ pip3 install AL-Khatma
+$ pip3 install AL-Khatma-lib
 ```
 
 ## **التعامل_مع_المكتبة**
