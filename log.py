@@ -1,19 +1,25 @@
 from datetime import datetime as dt
-try:
-    import AL_Khatma
-except ModuleNotFoundError:
-    import __init__ as AL_Khatma
+import os
+
+__main_path__ = os.path.dirname(__file__)
+
 def nowing():
     return dt.now().timestamp()
 
 class log:
 
     def __init__(self, title:str, mess:str):
-        self.log      = open(f'{AL_Khatma.__main_path__}/DATA/loging.log', 'r+', encoding='utf8')
-        self.title    = title
-        self.mess     = mess
-        self.log_list = self.log.read().split('\n')
-
+        if os.path.exists(path=f'{__main_path__}/DATA/loging.log'):
+            self.log      = open(f'{__main_path__}/DATA/loging.log', 'r+', encoding='utf8')
+            self.title    = title
+            self.mess     = mess
+            self.log_list = self.log.read().split('\n')
+        else:
+            os.makedirs(f'{__main_path__}/DATA/')
+            self.log      = open(f'{__main_path__}/DATA/loging.log', 'r+', encoding='utf8')
+            self.title    = title
+            self.mess     = mess
+            self.log_list = self.log.read().split('\n')
 
     def write_message(self, time=True):
         

@@ -21,14 +21,15 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 '''
-import os
 
-__version__   = '1.0.0'
+import os
+from log import log
+
+__version__   = '1.1.0'
 __main_path__ = os.path.dirname(__file__)
 
 os.chdir(path=__main_path__)
 
-from log import log
 
 class ALKhatma:
     def __init__ (self):

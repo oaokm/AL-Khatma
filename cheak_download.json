@@ -1,0 +1,19 @@
+[
+    {
+        "name_folder" : "DATA",
+        "files" : [
+            "loging.log",
+            "quran_books.json",
+            "Language/main.json",
+            "Language/bn.json",
+            "Language/zh.json",
+            "Language/es.json",
+            "Language/fr.json",
+            "Language/id.json",
+            "Language/ru.json",
+            "Language/sv.json",
+            "Language/tr.json",
+            "Language/ur.json"
+        ]
+    }
+]
