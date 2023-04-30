@@ -5,7 +5,7 @@
 </p>
 
 ## What's new in update (1.1.1):
-* Fixed a bug in the program for uploading important files
+* Fixed a bug in the program for download important files
 
 ## What's new in update (1.1.0):
 * Add a program that loads the task to load important files for the program to work
