@@ -86,6 +86,16 @@ $ pip install AL-Khatma-lib
 $ pip3 install AL-Khatma-lib
 ```
 
+#### تحميل الملفات الهامة
+الملفات الهامة هي ملف اللغة وبعض الملفات التي تساعد عمل البرنامج، بكتابة الأمر التالي:
+
+```py
+>>> import AL_Khatma
+>>> AL_Khatma.Download_DATA()
+```
+وأنتظر إلى أن تتم عملية التحميل بنجاح
+
+
 ## **التعامل_مع_المكتبة**
 
 حاليا هنالك حزمتين، وهي:
@@ -356,14 +366,15 @@ Result Search: [
 
 > **ملاحظة مهمة(2)**: خيار `type` هو نوع أو شكل الصفحة التي تريدها، وحاليا هنالك فقط شكلان فقط، ويمكن الاطلاع عليه [بالضغط هنا لرؤية الخيارات المتاح](https://github.com/oaokm/AL-Khatma/blob/main/DATA/quran_books.json).
 
+> **ملاحظة مهمة(3)**: عندما تضع المسار التي ستنزل فيها الصور يجب أن تضع المسار الكامل كما هو موضح في المثال
 
 طريقة كتابة الأمر كالتالي:
 
 ```py
 >>> from AL_Khatma.quran import Quran
 >>> quran = Quran() # استدعاء الكائن
->>> quran.page_pic([1, 2 , 48], 'm-madinah_ksu', '~/Pictures', 'quran') # كتابة جميع المعطيات اللازمة
-# Download Pages From Quran ... 
+>>> quran.page_pic([1, 2 , 48], 'm-madinah_ksu', '/home/oaokm/Pictures', 'quran') # كتابة جميع المعطيات اللازمة
+# Download Pages From Quran | [/home/oaokm/Pictures/Quran] 
 100%|███████████████████████████████████████| 3/3 [00:01<00:00,  1.69it/s]
 ```
 <p align="center">
