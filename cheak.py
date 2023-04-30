@@ -1,10 +1,9 @@
 import requests
 import os
-import __init__
 import json
 from tqdm import tqdm
 
-main_path = __init__.__main_path__
+main_path = os.path.dirname(__file__)
 
 class cheak:
 
@@ -46,8 +45,9 @@ class cheak:
                         url=f"https://raw.githubusercontent.com/oaokm/AL-Khatma/main/{self.path_url[download]}"
                             )
                 if github_file.status_code == 200:
-                    f = open(self.download_file[download], 'wb')
-                    f.write(github_file.content)
+                    with open(self.download_file[download], 'wb') as f:
+                        f.write(github_file.content)
+                        f.close()
                         
                 else:
                     print(f"[INFO]\nURL: {github_file.url}\tStatus Code: {github_file.status_code}")

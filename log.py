@@ -10,13 +10,16 @@ class log:
 
     def __init__(self, title:str, mess:str):
         if os.path.exists(path=f'{__main_path__}/DATA/loging.log'):
-            self.log      = open(f'{__main_path__}/DATA/loging.log', 'r+', encoding='utf8')
+            self.log      = open(f'{__main_path__}/DATA/loging.log', 'a+', encoding='utf8')
             self.title    = title
             self.mess     = mess
             self.log_list = self.log.read().split('\n')
         else:
-            os.makedirs(f'{__main_path__}/DATA/')
-            self.log      = open(f'{__main_path__}/DATA/loging.log', 'r+', encoding='utf8')
+            try:
+                os.makedirs(f'{__main_path__}/DATA/')
+            except FileExistsError:
+                pass
+            self.log      = open(f'{__main_path__}/DATA/loging.log', 'a+', encoding='utf8')
             self.title    = title
             self.mess     = mess
             self.log_list = self.log.read().split('\n')

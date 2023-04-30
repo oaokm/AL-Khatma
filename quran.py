@@ -1,5 +1,5 @@
 import AL_Khatma
-from log import log
+from .log import log
 import json
 import requests
 import os
@@ -7,6 +7,7 @@ from tqdm import tqdm
 import urllib3
 from time import perf_counter
 
+__main_path__ = os.path.dirname(__file__)
 
 class Quran:
     def __init__(self, lang='main'):
@@ -16,7 +17,7 @@ class Quran:
         """
         try:
             #* قراءة ملف اللغات
-            os.chdir(path=AL_Khatma.__main_path__)
+            os.chdir(path=__main_path__)
             self.quran = json.load(open(f"./DATA/Language/{lang}.json", "r", encoding="utf8"))
             log(
                 f'{__file__} > Quran | Status JSON File ', 
@@ -243,7 +244,8 @@ class Quran:
             pics = list()
             
             #? هنا تبدأ عملية الوصول للصفحات وتحميلها
-            print("# Download Pages From Quran ... ")
+            PATH = f'{path}/{name_folder}'
+            print(f"# Download Pages From Quran | [{os.path.abspath(PATH)}]")
             for p in tqdm(page):
                 #? التحقق من إذا كان المدخل لا يتخطى عدد صفحات القرأن
                 if p <= 604:
@@ -253,7 +255,7 @@ class Quran:
                     r_page = requests.get(url=url, verify=False)
                     
                     #* عملية إنشاء ملف تمهيدًا لتحميل الصفحات
-                    PATH = f'{path}/{name_folder}'
+                    
                     #? في حال كان خيار return_imge مفعل فسوف يتم تحميل الصور كبٍّت(النظام الثنائي)
                     if return_imge:
                         pics.append([p, r_page.content])
