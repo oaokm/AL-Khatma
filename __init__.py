@@ -6,7 +6,7 @@ import os
 from .log import log
 from .cheak import cheak
 
-__version__   = '1.1.0'
+__version__   = '1.1.1'
 __main_path__ = os.path.dirname(__file__)
 
 os.chdir(path=__main_path__)
