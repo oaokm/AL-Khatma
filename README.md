@@ -20,6 +20,10 @@
   <a href="#الترخيص">الترخيص</a>
   &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="https://github.com/oaokm/AL-Khatma/blob/main/UPDATE.md">التحديثات</a>
+  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/oaokm/AL-Khatma/issues">صفحة حل المشكلات</a>
+  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/oaokm/AL-Khatma/issues/new/choose">إنشاء مشكلة</a>
 </p>
 
 ![GitHub](https://img.shields.io/github/license/oaokm/AL-Khatma) | ![](https://img.shields.io/badge/Programing%20Language-Python_3_and_top-orange) | ![PyPI](https://img.shields.io/pypi/v/AL-Khatma-lib) | ![GitHub repo size](https://img.shields.io/github/repo-size/oaokm/AL-Khatma)
@@ -30,7 +34,7 @@
 في يوم الثالث من أبريل من عام 2023 الموافق الثاني عشر من رمضان لعام 1444 هـ في هذا اليوم بدأت الفكرة وبعدها قمت بتطبيق الفكرة وبناء أول API لي.
 
 وفي اليوم التاسع عشر من أبريل من عام 2023 الموافق الثامن والعشرون من رمضان لعام 1444 هـ وبتوفيق من الله لقد أنهيت النسخة الأولى من هذا المشروع ولله الحمد.
-وأشكر أخي وأختي اللذانِ دعمني وحفزاني لأتمّ هذا المشروع ❤️
+وأشكر أخي وأختي اللذانِ دعمني وحفزاني لإتمّ هذا المشروع ❤️
 
 
 ## فكرة_الختمة
@@ -59,7 +63,7 @@
 * حزمة الأذكار
 * حزمة التفسير القرآني
 
-يثتم الإعلان عنها في الإصدارات القادمة -إن شاء الله-
+سيتم الإعلان عنها في الإصدارات القادمة -إن شاء الله-
 
 ## **تحميل_المكتبة**
 
@@ -122,8 +126,8 @@ Quran.show_block_aya(
             ):
         """
         show_block_aya(func): هي دالة تقوم بإستخراج ما يدرده المستخدم من ملف اللغة
-        verses_no(int): أستخراج السروة التي تريدها
-        verses_number(list): في حالة أنك ترد صورة بعينها يمكنك ذلك بكتابة رقم أيتها. ويمكن أن تجعلعا فارغة
+        verses_no(int): أستخراج السورة التي تريدها
+        verses_number(list): في حالة أنك تريد سورة بعينها يمكنك ذلك بكتابة رقم أيتها. ويمكن أن تجعلعا فارغة
         orderly(bool): إذا أردت أن ترى النتيجة مطبوعة بشكل يمكن قراءتها
         """
 ```
@@ -337,7 +341,6 @@ Result Search: [
 ```py
 >>> quran.searching('from solomon', search_second_lang=True)
 [{'ID': 3189, 'Name': 'النَّمل', 'Transliteration': 'An-Naml', 'translation': 'The Ant', 'type': 'meccan', 'total_verses': 93, 'verses_no': 27, 'jozz': 19, 'page': 379, 'verses_number': 30, 'line_start': 9, 'line_end': 10, 'verses_text': 'إِنَّهُۥ مِن سُلَيۡمَٰنَ وَإِنَّهُۥ بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ', 'verses_text_without_diacritical': 'إنه من سليمان وإنه بسم الله الرحمن الرحيم', 'verses_text_english': "Indeed, it is from Solomon, and indeed, it reads: 'In the name of Allah, the Entirely Merciful, the Especially Merciful", 'verses_text_transliteration': 'Innahu min sulaymana wainnahu bismi Allahi alrrahmani alrraheemi'}]
-
 ```
 
 ### تحميل صفحات من القرآن الكريم
