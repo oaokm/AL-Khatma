@@ -13,7 +13,7 @@
   &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#Download">Download</a>
   &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#How-to-use">How to use</a>
+  <a href="#How-to-use-it">How to use it</a>
   &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#Sources">Sources</a>
   &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
