@@ -4,6 +4,7 @@
   <a href="https://github.com/oaokm/AL-Khatma/blob/main/UPDATE_EN.md">English</a>
 </p>
 
+<a href="https://github.com/oaokm/AL-Khatma/blob/main/README.md"> ➡️ العودة إلى إقرأني </a>
 
 ## ما الأشياء الجديد في تحديث (1.1.1):
 * إصلاح خلل في برنامج تحميل الملفات المهمة
