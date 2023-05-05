@@ -4,6 +4,8 @@
   <a href="https://github.com/oaokm/AL-Khatma/blob/main/UPDATE_EN.md">English</a>
 </p>
 
+<a href="https://github.com/oaokm/AL-Khatma/blob/main/README_EN.md"> ⬅️ Back to README </a>
+
 ## What's new in update (1.1.1):
 * Fixed a bug in the program for download important files
 
