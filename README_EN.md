@@ -8,6 +8,8 @@
   <a href="https://github.com/oaokm/AL-Khatma/blob/main/README_EN.md">English</a>
 </p>
 
+<p align="center">*Under Revisioning...*</p>
+
 <p align="center">
   <a href="#Program-Idea">Program idea</a>
   &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
