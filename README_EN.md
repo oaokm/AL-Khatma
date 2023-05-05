@@ -59,7 +59,7 @@ The library has several packages, the most important of which are:
 
 >**Note**: It will be announced in the next versions.
 
-There are additional packages being worked on, such as:
+There are additional packages being working on, such as:
 * Azkar package.
 * Quranic interpretation package.
 
