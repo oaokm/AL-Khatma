@@ -4,7 +4,7 @@
     },
     [
         {
-            "Message":"\tWe found new version.\n\tEnter in Command Line this command: \n\n\t\tpip install AL-Khatma-lib -U \n\n\t\tOR: pip install AL-Khatma-lib --upgrade"
+            "Message":"\n\tWe found new version({}).\n\tEnter in Command Line this command: \n\n\t\tpip install AL-Khatma-lib -U \n\n\t\tOR: pip install AL-Khatma-lib --upgrade"
         }
     ]
 ]
