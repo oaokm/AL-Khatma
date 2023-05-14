@@ -1,13 +1,22 @@
 from .quran import Quran
+from .message import message
 from .log import log
 from tqdm import tqdm
+import os
+
+__main_path__ = os.path.dirname(__file__)
+file_name     = __file__.split('/')[-1]
 
 class khatma:
     def __init__(self, days:int):
         log(
-            f"{__file__} > khatma | Status The Class",
+            f"{file_name} > khatma | Status The Class",
             f"True, days(int): {days}"
             ).write_message()
+        
+        #! التحقق من وجود تحديث جديد للمكتبة
+        message().cheak_version()
+
         self.days       = days
         self.werrd_page = list()
         self.quran      = Quran().quran_blocks()
@@ -19,8 +28,10 @@ class khatma:
         report(bool): في حال تفعيل الخيار يتم طباعة تقرير عن النتائج التي تم تحليلها من هذه الدالة
         werrd(bool): في حال تفعيل الخيار تتم عملية تقسيم القرآن بناءًا على عدد الأيام الذي أدخلها المستخدم. في حال عدم تفعيل هذا الخيار يقوم البرنامج بإعادة قيمة عدد الصفحات اليومية الازمة لإنهاء قراءة القرآن كاملة
         """
+        #! التحقق من وجود تحديث جديد للمكتبة
+        message().cheak_version()
         log(
-            f"{__file__} > khatma > Khatma_page | Info",
+            f"{file_name} > khatma > Khatma_page | Info",
             f"Days:{self.days}, report: {report}, werrd: {werrd}"
             ).write_message()
         #* عدد صفحات القرآن الكريم حسب نسخة مجمع الملك فهد لطباعة المصحف الشريف
@@ -55,7 +66,7 @@ class khatma:
             #! في حال وجود مشكلة يتم تنفيذ هذا الأمر، وهي مشكلة في عملية الموازنة
             else:
                 log(
-                f"{__file__} > khatma > Khatma_page | Partition Error ",
+                f"{file_name} > khatma > Khatma_page | Partition Error ",
                 f"An error has occurred that is not supposed to happen. Value: len(Fdays_pages) > self.days: {len(Fdays_pages) > self.days}, len(Fdays_pages):{len(Fdays_pages)}, Fdays_pages: {Fdays_pages}, days: {self.days}"
                 ).write_message()
                 print("[ khatma > Khatma_page | Partition Error ] An error has occurred that is not supposed to happen, Visit the library's Issues page: https://github.com/oaokm/AL-Khatma/issues")
@@ -109,7 +120,7 @@ class khatma:
             report = f"[REPORT KHATMA]\nDays: {self.days}\nReading Rate: {int(sum(self.werrd_page)/len(self.werrd_page))} (Page/Day)\nWeerd: {self.werrd_page}\nNumber of Werrd: {len(page_per_day)}"
             if report: print(report)
             log(
-                f"{__file__} > khatma > Khatma_page > (werrd) | Status",
+                f"{file_name} > khatma > Khatma_page > (werrd) | Status",
                 f"True"
                 ).write_message()
             #* إرجاع قيمة العملية

@@ -13,7 +13,16 @@
             "Language/ru.json",
             "Language/sv.json",
             "Language/tr.json",
-            "Language/ur.json"
+            "Language/ur.json",
+            "Tafser/mukhtasar.json",
+            "Tafser/muyassar.json"
+        ]
+    },
+    {
+        "name_folder": "Logo",
+        "files":[
+            "AL_Khatma_logo_one.png",
+            "AL_Khatma_LOGO_two.png"
         ]
     }
 ]

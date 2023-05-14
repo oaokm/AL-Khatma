@@ -6,10 +6,10 @@ import os
 from .log import log
 from .cheak import cheak
 
-__version__   = '1.1.1'
+#! لا تقم بتغير رقم الإصدار
+#! Do not change the version
+__version__   = '2.0.0'
 __main_path__ = os.path.dirname(__file__)
-
-os.chdir(path=__main_path__)
 
 
 def Download_DATA():

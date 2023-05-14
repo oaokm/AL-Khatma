@@ -1,5 +1,6 @@
-import AL_Khatma
 from .log import log
+from .message import message
+from .tafser import tafser
 import json
 import requests
 import os
@@ -8,6 +9,7 @@ import urllib3
 from time import perf_counter
 
 __main_path__ = os.path.dirname(__file__)
+file_name     = __file__.split('/')[-1]
 
 class Quran:
     def __init__(self, lang='main'):
@@ -15,12 +17,15 @@ class Quran:
         Quran(class): 
         lang: اللغة التي تريد عرضها
         """
+        #! التحقق من وجود تحديث جديد للمكتبة
+        message().cheak_version()
+        
         try:
             #* قراءة ملف اللغات
-            os.chdir(path=__main_path__)
-            self.quran = json.load(open(f"./DATA/Language/{lang}.json", "r", encoding="utf8"))
+            # os.chdir(path=__main_path__)
+            self.quran = json.load(open(f"{__main_path__}/DATA/Language/{lang}.json", "r", encoding="utf8"))
             log(
-                f'{__file__} > Quran | Status JSON File ', 
+                f'{file_name} > Quran | Status JSON File ', 
                 f'Read: True, Language: {lang}'
                 ).write_message()
         except FileNotFoundError as e:
@@ -28,11 +33,11 @@ class Quran:
 
             if lang == '?':
                 log(
-                f'{__file__} > Quran | Show All Language ', 
+                f'{file_name} > Quran | Show All Language ', 
                 f'The user has requested to view the available languages of the Quran'
                 ).write_message()
 
-                lang = os.listdir(path='./DATA/Language')
+                lang = os.listdir(path=f'{__main_path__}/DATA/Language')
                 print('the available languages of the Quran'.title())
                 for i in range(len(lang)):
                     nameFile = lang[i].split(".")[0]
@@ -40,7 +45,7 @@ class Quran:
                     else: print(f"[{i}] {nameFile}")
             else:
                 log(
-                f'{__file__} > Quran | Status JSON File ', 
+                f'{file_name} > Quran | Status JSON File ', 
                 f'Falus | The user has been entered for an unavailable language'
                 ).write_message()
                 
@@ -48,7 +53,7 @@ class Quran:
                 
                 #// إنتبه: قم بتغير مسار لكي لا تحصل مشاكل
                 #// قم بوضع طريقة لقراءة جميع الملفات دون مشاكل عدم معرفه موقعها
-                lang = os.listdir(path='./DATA/Language')               
+                lang = os.listdir(path=f'{__main_path__}/DATA/Language')               
                 for i in range(len(lang)):
                     nameFile = lang[i].split(".")[0]
                     if nameFile == 'main': print(f"[{i}] ar, en ({nameFile})")
@@ -59,6 +64,8 @@ class Quran:
             self,
             verses_no:int,
             verses_number:list,
+            tafser_aya=False,
+            tafser_type=str(),
             orderly=False,
             ):
         """
@@ -67,14 +74,17 @@ class Quran:
         verses_number(list): في حالة أنك ترد صورة بعينها يمكنك ذلك بكتابة رقم أيتها. ويمكن أن تجعلعا فارغة
         orderly(bool): إذا أردت أن ترى النتيجة مطبوعة بشكل يمكن قراءتها
         """
+        #! التحقق من وجود تحديث جديد للمكتبة
+        message().cheak_version()
+
         log(
-            "quran.py > Quran > show_block_aya | info",
+            f"{file_name} > Quran > show_block_aya | info",
             f"verses_no: {verses_no}, verses_number: {verses_number}, orderly: {orderly}"
         ).write_message()
 
         if verses_no <= 114:
             log(
-            f"{__file__} > Quran > show_block_aya | number of Surahs of the Qur’an is good",
+            f"{file_name} > Quran > show_block_aya | number of Surahs of the Qur’an is good",
             f"The number entered did not exceed the number of Surahs of the Qur’an"
             ).write_message()
             #? لتدوين أيات جميع السورة المحددة
@@ -97,8 +107,13 @@ class Quran:
                                 verses.append(self.quran[search+i])
                             else:
                                 continue
+                    #? نتائج البجث عن تفسير الأيات، يتم تحديدها من رقم السورة أو رقم السورة وأيات يتم تحديدها من "verses_number"
+                    results_tafser = list()
+                    if tafser_aya:
+                        taf            = tafser(tafser_book='muyassar')
+                        results_tafser = taf.call_block(verses_no, verses_number)
 
-                    #* طباعة تقرير مُنسق مع إرجاع قينتين للعمليتين السابقتين
+                    #* طباعة تقرير مُنسق مع إرجاع ثلاثة قيم للعمليات السابقة
                     if orderly:
                         txt = ('results'.upper(), 'verses'.upper())
                         print(f'\n\n\n{txt[0]:.^50}\n\n\n')
@@ -106,15 +121,15 @@ class Quran:
                         print(f'\n\n\n{txt[1]:.^50}\n\n\n')
                         print(json.dumps(verses, indent=4, ensure_ascii=False))
                         
-                        return (results, verses)
-                    #* إرجاع القيمتين السابقين فقط
-                    else: return (results, verses)
+                        return (results, verses, results_tafser)
+                    #* إرجاع ثلاثة قيم 
+                    else: return (results, verses, results_tafser)
                 #? هذا في حالة عدم إجاد السورة فإنه يستمر حتى يجد السورة المطلوب
                 else: continue
         #? في حالة تجاوز 114 سورة قرأنية يتم رفض الطلب
         else:
             log(
-            f"{__file__} > Quran > show_block_aya | Verses Over Error",
+            f"{file_name} > Quran > show_block_aya | Verses Over Error",
             f"I have exceeded 114 Quranic chapters. Please adhere to the number of Quranic chapters (from 1 to 114)."
             ).write_message()
             print('I have exceeded 114 Quranic chapters. Please adhere to the number of Quranic chapters (from 1 to 114).')
@@ -134,15 +149,18 @@ class Quran:
         search_second_lang(bool): في حال تفعيل هذه الخاصية سيتم البحث بنائا على اللغة الثانية في ملف اللغة
         print_report(bool): في حال تفعيل هذه الخاصية قوم بطباعة تقرير منظم عن نتائج البحث
         """
+        #! التحقق من وجود تحديث جديد للمكتبة
+        message().cheak_version()
+
         log(
-            f"{__file__} > Quran > searching | Search Info",
+            f"{file_name} > Quran > searching | Search Info",
             f"Search: {text}, search_my_lang: {search_second_lang}, print_report: {print_report}"
             ).write_message()
         start = perf_counter()
         #? في حال إذا كان النص فارغ لا يتم تنفيذ الطلب
         if text != '':
             log(
-            f"{__file__} > Quran > searching | The Search Status",
+            f"{file_name} > Quran > searching | The Search Status",
             f"True"
             ).write_message()
             end = perf_counter()
@@ -185,7 +203,7 @@ class Quran:
         
         else:
             log(
-            f"{__file__} > Quran > searching | The Search Status",
+            f"{file_name} > Quran > searching | The Search Status",
             f"The search failed; the user has not made any input in search zone or input empty."
             ).write_message()
             end = perf_counter()
@@ -195,8 +213,11 @@ class Quran:
 
     #? لإرجاع قيمة self.quran
     def quran_blocks(self):
+        #! التحقق من وجود تحديث جديد للمكتبة
+        message().cheak_version()
+
         log(
-                f'{__file__} > quran_blocks | Return All The Quran Data ', 
+                f'{file_name} > quran_blocks | Return All The Quran Data ', 
                 f'The user return all data quran from json file'
                 ).write_message()
         return self.quran
@@ -217,26 +238,29 @@ class Quran:
         name_folder(str): أسم الملف الذي ستكون فيها الصور الصفحات
         return_imge(bool): في حال تم تفعيل الخيار، سيتم تحميل الصفحات على شكل بايت (Binary)
         """
+        #! التحقق من وجود تحديث جديد للمكتبة
+        message().cheak_version()
+
         #? التحقق من موجود إنترنت
         try:
             requests.get('https://github.com/oaokm')
             log(
-            f"{__file__} > Quran > page_pic | Check The Internet Status",
+            f"{file_name} > Quran > page_pic | Check The Internet Status",
             f"The internet is good"
             ).write_message()
 
             #* قراءة ملف الذي يحتوي على رابط صفحات القرأن كاملة وبجودة عالية
-            quran_books = json.load(open('./DATA/quran_books.json', 'r', encoding='utf8'))
+            quran_books = json.load(open(f'{__main_path__}/DATA/quran_books.json', 'r', encoding='utf8'))
             try:
                 log(
-                    f"{__file__} > Quran > page_pic | Check For Read JSON File",
+                    f"{file_name} > Quran > page_pic | Check For Read JSON File",
                     f"The file (quran_books.json) is good"
                 ).write_message()
                 
                 web_pic = quran_books[type]
             except KeyError as e:
                 log(
-                    f"{__file__} > Quran > page_pic | Check For Read JSON File",
+                    f"{file_name} > Quran > page_pic | Check For Read JSON File",
                     f"Error(keyError): {e}"
                 ).write_message()
                 print(f'[ Quran > page_pic | KeyError ]: {e}')
@@ -245,7 +269,7 @@ class Quran:
             
             #? هنا تبدأ عملية الوصول للصفحات وتحميلها
             PATH = f'{path}/{name_folder}'
-            print(f"# Download Pages From Quran | [{os.path.abspath(PATH)}]")
+            print(f"# Download Pages From Quran | Type: {type} | Path:[{os.path.abspath(PATH)}] | From: {page[0]} to {page[-1]}")
             for p in tqdm(page):
                 #? التحقق من إذا كان المدخل لا يتخطى عدد صفحات القرأن
                 if p <= 604:
@@ -275,10 +299,13 @@ class Quran:
         #? في حال عدم وجود إنترنت يتم رفض الأمر
         except requests.exceptions.ConnectionError as e:
             log(
-            f"{__file__} > Quran > page_pic | Check The Internet Status",
+            f"{file_name} > Quran > page_pic | Check The Internet Status",
             f"The WiFi connection error, please check your internet"
             ).write_message()
             print(f"[ Quran | page_pic > The WiFi connection error ] {e}")
+    
 
 if __name__ == '__main__':
+    #! التحقق من وجود تحديث جديد للمكتبة
+    message().cheak_version()
     print('[quran.py] This file is not to run')
