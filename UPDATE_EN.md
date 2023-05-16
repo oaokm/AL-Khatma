@@ -6,9 +6,42 @@
 
 <a href="https://github.com/oaokm/AL-Khatma/blob/main/README_EN.md"> ⬅️ Back to README </a>
 
+### What's new in update (2.0.0)  🌟
+<ol>
+  <li>Adding a PDF package to the Holy Quran, one of the advantages of this library</li>
+    <ol type='i'>
+      <li>Issue any number of pages and export them to a PDF file</li>
+      <li>Splitting the pages of the Holy Quran, and exporting the daily roses as a PDF file</li>
+      <li>The quality of the pages used in the export is high</li>
+      <li>It is possible to issue a specific Sura with all its verses</li>
+    </ol>
+  <li>Add the Tafser package, available in the following books:</li>
+    <ol type='i'>
+      <li>Muyassar Interpretation of the Holy Quran</li>
+      <li>Al-Maysar's interpretation of the Holy Quran</li>
+    </ol>
+  <li>Add the adkar package, which contains more than 130 categories</li>
+  <li>Fix previous version errors. Including:</li>
+    <ol type='i'>
+      <li>The problem of setting the full path to download images of the Quran, etc.</li>
+      <li>Solve programming problems</li>
+    </ol>
+  <li>The message package that is heard by the developer informing everyone who will use the library of the latest updates to the library</li>
+</ol>
+
 ## What's new in update (1.1.1):
-* Fixed a bug in the program for download important files
+<details>
+  <summary>Click here to see the new things in this release</summary>
+    <ol>
+      <li>Fixed a bug in the program for download important files</li>
+    </ol>
+</details>
 
 ## What's new in update (1.1.0):
-* Add a program that loads the task to load important files for the program to work
-* General repairs
+<details>
+  <summary>Click here to see the new things in this release</summary>
+    <ol>
+      <li>Add a program that loads the task to load important files for the program to work</li>
+      <li>General repairs</li>
+    </ol>
+</details>
