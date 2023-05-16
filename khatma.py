@@ -1,7 +1,9 @@
 from .quran import Quran
 from .message import message
 from .log import log
+from .pdf_page import quran_pdf
 from tqdm import tqdm
+from time import perf_counter
 import os
 
 __main_path__ = os.path.dirname(__file__)
@@ -22,11 +24,13 @@ class khatma:
         self.quran      = Quran().quran_blocks()
 
     #* دالة تقوم على تقسيم صفحات القرآن لهدف إنهاء قراءة القرآن في يوم معين
-    def Khatma_page(self, report=False, werrd=False):
+    def Khatma_page(self, report=False, werrd=False, pdf=False, down_path_pdf=str()):
         """
         Khatma_page(func): هي دالة تقوم بتقسيم صفحات القرآن الكريم بهدف إنهاء قراءتها
         report(bool): في حال تفعيل الخيار يتم طباعة تقرير عن النتائج التي تم تحليلها من هذه الدالة
         werrd(bool): في حال تفعيل الخيار تتم عملية تقسيم القرآن بناءًا على عدد الأيام الذي أدخلها المستخدم. في حال عدم تفعيل هذا الخيار يقوم البرنامج بإعادة قيمة عدد الصفحات اليومية الازمة لإنهاء قراءة القرآن كاملة
+        pdf(bool): في حال تفعيل هذا الخيار، سيتم تطبيق التقسيم وإنشاء ملفات بي دي أف للقرأن
+        dwon_path_pdf(str): مسار تنزيل ملفات البي دي أف
         """
         #! التحقق من وجود تحديث جديد للمكتبة
         message().cheak_version()
@@ -60,7 +64,7 @@ class khatma:
             if sum(Fdays_pages_N) == 604:
                 self.werrd_page = Fdays_pages_N
                 #* في حالة طلب المستخدم عدم تفعيل التقسيم على القرآن يتم تنفيذ هذه العملية
-                if werrd == False:
+                if werrd or pdf == False:
                     if report: print(report_pages_N)
                     return Fdays_pages_N
             #! في حال وجود مشكلة يتم تنفيذ هذا الأمر، وهي مشكلة في عملية الموازنة
@@ -76,14 +80,14 @@ class khatma:
             #? التحقق من أن مجموع الصفحات المقسمة تساوي عدد صفحات القرآن الكريم
             if sum(Fdays_pages) == 604:
                 self.werrd_page = Fdays_pages
-                if werrd == False:
+                if werrd or pdf == False:
                     if report: print(report)
                     return Fdays_pages
             else: 
-                if werrd == False:
+                if werrd or pdf == False:
                     if report: print(report)
                     return Fdays_pages
-        
+
         #* في حال تفعيل هذا الخيار، تبدأ عملية تقسيم القرآن الكريم على عدد الأيام المدخلة
         if werrd:
             """
@@ -125,4 +129,22 @@ class khatma:
                 ).write_message()
             #* إرجاع قيمة العملية
             return page_per_day
+
+        #* تطبيق التقسيم مباشرًأ على pdf
+        elif pdf and down_path_pdf != '':
+            last_value = 1
+            pdf        = quran_pdf()
+            start      = perf_counter()
+            for day in range(len(self.werrd_page)):
+                print(f"# {day+1} of {self.days}\tFrom {last_value} -> {self.werrd_page[day]+last_value-1} Page")
+                pdf.creating('./weerds',
+                            From=last_value, to=self.werrd_page[day]+last_value-1, 
+                            cover=True, 
+                            cover_title=f'Number of Weerd: {day+1} of {self.days} Days')
+                last_value += self.werrd_page[day]
+            end    = perf_counter()
+            report = f"\n[REPORT KHATMA - PDF]\nRuning Time: {end-start}\nDays: {self.days}\nReading Rate: {int(sum(self.werrd_page)/len(self.werrd_page))} (Page/Day)\nWeerd: {self.werrd_page}\nNumber of Werrd: {len(self.werrd_page)}\nPath: {os.path.abspath(down_path_pdf)}"
+            if report: print(report) 
+        elif down_path_pdf == '':print("[Khatma | PDF] The option (down_path_pdf) is False, Please change to True, like this:\n\n\tkhatma(30).Khatma_page(pdf=True, dwon_path_pdf='./weerds', report=True)\n\n")
+
         else: pass

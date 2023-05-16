@@ -14,7 +14,7 @@ class Adkar:
         message().cheak_version()
         self.adkar = json.load(open(f'{__main_path__}/DATA/Adkar/adkar.json', 'r'))
 
-    def show_me_titles(self):
+    def show_me_categorys(self):
         #! التحقق من وجود تحديث جديد للمكتبة
         message().cheak_version()
         categorys = list()
@@ -23,7 +23,10 @@ class Adkar:
                 categorys.append(cheak_title['category'])
             else:
                 continue
-        
+        log(
+            f'{file_name} > show_me_categorys | request categorys', 
+            f'The user a request all categorys on Databeas'
+            ).write_message()
         return categorys
     
     def call_block(self, category:str, report=False):
@@ -42,4 +45,8 @@ class Adkar:
         end = perf_counter()
         
         if report: print(f"[REPORT]\nRuning Time: {end-start}\nNumber of Results: {len(results)}\nResults: {json.dumps(results, indent=4, ensure_ascii=False)}")
+        log(
+            f'{file_name} > call_block | request call block', 
+            f'The user a request category: {category}, and report: {report}'
+            ).write_message()
         return results

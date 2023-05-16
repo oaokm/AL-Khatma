@@ -20,12 +20,21 @@ class tafser:
     def __init__(self, tafser_book:str):
         #! التحقق من وجود تحديث جديد للمكتبة
         message().cheak_version()
+        
         try:
             if tafser_book != '?' :
                 self.tafser = json.load(open(f'{__main_path__}/DATA/Tafser/{tafser_book}.json', 'r'))
-
+                log(
+                f'{file_name} > tafser > tafser_book | Book ', 
+                f'The book of tafser is : {tafser_book}'
+                ).write_message()
             else:
+                log(
+                f'{file_name} > tafser > tafser_book | Request books list', 
+                f'The user a request book list for tafser'
+                ).write_message()
                 show_me_files()
+
         except FileNotFoundError:
             show_me_files(mess="[tafser]: The Books is not available.")
     def call_block(self,
@@ -62,7 +71,7 @@ class tafser:
                 return results
             except AttributeError as e:
                 log(
-                f'{file_name} > tafser | Status JSON File ', 
+                f'{file_name} > tafser | Entering ', 
                 f'Falus | The user has been entered for an unavailable tafser'
                 ).write_message()
                 
@@ -78,6 +87,10 @@ class tafser:
     def all_blocks(self):
         #! التحقق من وجود تحديث جديد للمكتبة
         message().cheak_version()
+        log(
+            f'{file_name} > all_blocks | request all blocks on Databeas', 
+            f'The user a request all blocks on Databeas'
+            ).write_message()
         return self.tafser
 
     def searching(self, text:str, report=False):

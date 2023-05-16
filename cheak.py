@@ -11,11 +11,9 @@ class cheak:
     def __init__(self):
         self.download_file = list()
         self.path_url      = list()
-        # self.JSONFILE      = json.load(open('./cheak_download.json', 'r', encoding='utf8'))
         try:
             self.JSONFILE      = requests.get(
-                url="https://raw.githubusercontent.com/oaokm/AL-Khatma/main/cheak_download.json"
-                ).json()
+                url="https://raw.githubusercontent.com/oaokm/AL-Khatma/main/DATA/cheak_download.json").json()
         except requests.exceptions.ConnectionError as e:
             log(
             f"{__file__} > cheak > __init__ | Check The Internet Status",

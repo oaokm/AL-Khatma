@@ -37,4 +37,3 @@ def show_me_log():
         f'The user to been request the path log file'
         ).write_message()
     return f"{__main_path__}/DATA/loging.log"
-

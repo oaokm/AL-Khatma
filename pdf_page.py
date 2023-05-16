@@ -26,7 +26,6 @@ def Latin_to_english(text:str):
         'Ṣ':'S',
         'ḍ':'d',
         'Ḍ':'D',
-
     }
     for i in text:
         try:
@@ -95,6 +94,9 @@ def add_to_table(From:int, To:int):
             )
     SUM=int()
     for p in range(len(table[1:])):
+        # if table[1:][p][3] != table[1:][p-1][4] and p != 0 : SUM += int(table[1:][p][-1])
+        # elif p == 1 and table[1:][p][3] == table[1:][p-1][4] : SUM += int(table[1:][p][-1])
+        # else: continue
         SUM += int(table[1:][p][-1])
     table.append(['', '', '', '', '', str(SUM)])
 
@@ -105,7 +107,7 @@ class PDF(FPDF):
         self.image(
             f"{__main_path__}/Logo/AL_Khatma_logo_one.png",
             x= 79.02 , 
-            y=7.38,
+            y= 7.38,
             w= 51.97,
             h= 12.92
             )
@@ -131,31 +133,62 @@ class PDF(FPDF):
 
 class quran_pdf:
     def __init__(self, block=list()):
+        #! التحقق من وجود تحديث جديد للمكتبة
+        message().cheak_version()
         
         self.quran    = Quran()
         self.block    = block
         self.pic_path = f"{__main_path__}/Pictures"
 
+        log(
+            f'{file_name} > quran_pdf | A values', 
+            f'block: {self.block}'
+            ).write_message()
+
         if not os.path.exists(path=f"{self.pic_path}/quran_pages"):
+            log(
+                f'{file_name} > quran_pdf | Create a folder', 
+                f'Create a folder which will have high resolution images of the Quran'
+                ).write_message()
             os.mkdir(path=f"{self.pic_path}/quran_pages")
         else:
             pass
-    
+        
     def download_pages(self):
+        #! التحقق من وجود تحديث جديد للمكتبة
+        message().cheak_version()
+        log(
+            f'{file_name} > download_pages | Download a pages of Quran', 
+            f'Download a pages of Quran'
+            ).write_message()
         self.quran.page_pic([page for page in range(1, 605)], 'm-madinah_tafsir', self.pic_path, 'quran_pages')
 
-    def ceating(self, From:int, to:int, path_pdf:str, cover=True):
+    def creating(self, path_pdf:str, From=int(), to=int(), cover=True, cover_title=str()):
+        #! التحقق من وجود تحديث جديد للمكتبة
+        message().cheak_version()
+        log(
+            f'{file_name} > creating | A values for creating', 
+            f'path_pdf: {path_pdf}, From: {From}, to: {to}, cover: {cover}, cover_title: {cover_title}'
+            ).write_message()
         pdf   = PDF("P", "mm", "A4")
         if self.block == []:
             start_page = From
             end_page   = to
-
+            log(
+            f'{file_name} > creating | A values for Start and End page', 
+            f'Start page: {start_page}, end page: {end_page}'
+            ).write_message()
         else:
             start_page = self.block[0]['page']
             end_page   = self.block[-1]['page']
-
+            log(
+            f'{file_name} > creating | A values for Start and End page', 
+            f'Start page: {start_page}, end page: {end_page}'
+            ).write_message()
+        if cover_title == '': cover_title = f'Sura Information(From: {start_page} to: {end_page} Page):'
+        else: pass
         if cover:
-            pdf.cover(f'Sura/Weerd Information(From: {start_page} to: {end_page} Page):',
+            pdf.cover(cover_title,
             add_to_table(start_page, end_page)
             )
         #* get total page numbers
@@ -166,11 +199,15 @@ class quran_pdf:
 
         if not os.path.exists(path=path_pdf): os.mkdir(path=path_pdf)
         
-        PDF_name = os.path.abspath(f'{path_pdf}/Quran_form{start_page}_to_{end_page}.pdf')
-        print(f"# Creating PDF file ... [{PDF_name}]")
-        for i in tqdm(range(start_page, end_page+1)):
-            pdf.add_page()
-            pdf.image(f'{__main_path__}/Pictures/quran_pages/{i}.png', w=169.12, h=250.46, x=20.44, y=25.10)
-            
+        try:
+            PDF_name = os.path.abspath(f'{path_pdf}/Quran_from_{start_page}_to_{end_page}.pdf')
+            print(f"# Creating PDF file ... [{PDF_name}]")
+            for i in tqdm(range(start_page, end_page+1)):
+                pdf.add_page()
+                pdf.image(f'{__main_path__}/Pictures/quran_pages/{i}.png', w=169.12, h=250.46, x=20.44, y=25.10)
+                
 
-        pdf.output(PDF_name)
+            pdf.output(PDF_name)
+        except FileNotFoundError:
+            print("Opes! We found lost a files. now download all pages of Quran .... ")
+            self.download_pages()
