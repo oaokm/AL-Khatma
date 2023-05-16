@@ -23,7 +23,7 @@
   &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="https://github.com/oaokm/AL-Khatma/issues">صفحة حل المشكلات</a>
   &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/oaokm/AL-Khatma/issues/new/choose">إنشاء مشكلة</a>
+  <a href="https://github.com/oaokm/AL-Khatma/issues/new/choose">التبليغ عن مشكلة</a>
 </p>
 
 <!-- <details>
