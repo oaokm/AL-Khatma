@@ -31,7 +31,7 @@
       <li>The problem of setting the full path to download images of the Quran, etc.</li>
       <li>Solve programming problems</li>
     </ol>
-  <li>The message package that is heard by the developer informing everyone who will use the library of the latest updates to the library</li>
+  <li>A messaging package that allows the developer to notify everyone who will use the library of recent updates to the library</li>
 </ol>
 
 ## What's new in update (1.1.1):
