@@ -6,6 +6,11 @@
 
 <a href="https://github.com/oaokm/AL-Khatma/blob/main/README_EN.md"> ⬅️ Back to README </a>
 
+### What's new in update (2.0.1) 🌟
+<ol>
+  <li> Fixed a bug in the PDF package </li>
+</ol>
+
 ### What's new in update (2.0.0)  🌟
 <ol>
   <li>Adding a PDF package to the Holy Quran, one of the advantages of this library</li>
