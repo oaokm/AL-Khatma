@@ -8,7 +8,7 @@ from .cheak import cheak
 
 #! لا تقم بتغير رقم الإصدار
 #! Do not change the version
-__version__   = '2.0.0'
+__version__   = '2.0.1'
 __main_path__ = os.path.dirname(__file__)
 
 

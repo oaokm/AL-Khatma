@@ -150,7 +150,7 @@ class quran_pdf:
                 f'{file_name} > quran_pdf | Create a folder', 
                 f'Create a folder which will have high resolution images of the Quran'
                 ).write_message()
-            os.mkdir(path=f"{self.pic_path}/quran_pages")
+            os.makedirs(f"{self.pic_path}/quran_pages")
         else:
             pass
         
