@@ -3,45 +3,16 @@ import os
 import json
 from .log import log
 from .__init__ import __version__
+from .__init__ import json_edit
 from random import randint
 import webbrowser
 
 __main_path__ = os.path.dirname(__file__)
 file_name     = __file__.split('/')[-1]
 
-class json_edit:
-    def __init__(self, name_file:str):
-        self.name_file = name_file
-    
-    def info_file(self):
-        if not os.path.exists(path=f"{__main_path__}/DATA/info.json"):
-            INFO = {
-                "API_name": "AL-Khatma",
-                "Version": __version__,
-                "Is_a_new": "True",
-                "License": "MIT",
-                "Progjet_page": "https://github.com/oaokm/AL-Khatma",
-                "Author": "Osamah Awadh"
-            }
-            with open(f"{__main_path__}/DATA/info.json", 'w') as info :
-                info.write(json.dumps(INFO, indent=4, ensure_ascii=False))
-        else:
-            pass
-            
-
-    def edit(self, arge:str ,value):
-        with open(self.name_file, 'r+') as f:
-            data = json.load(f)
-            data[arge] = value
-            f.seek(0)
-            json.dump(data, f, indent=4)
-            f.truncate()
-
-
 
 class message:
     def __init__(self):
-        json_edit(f'{__main_path__}/DATA/info.json').info_file()
         self.url_message = "https://raw.githubusercontent.com/oaokm/AL-Khatma/main/DATA/message.json"
         self.info        = json.load(open(f'{__main_path__}/DATA/info.json', 'r+'))
 
