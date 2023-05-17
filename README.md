@@ -40,6 +40,7 @@
 ![GitHub](https://img.shields.io/github/license/oaokm/AL-Khatma) | ![](https://img.shields.io/badge/Programing%20Language-Python_3_and_top-orange) | ![PyPI](https://img.shields.io/pypi/v/AL-Khatma-lib) | ![GitHub repo size](https://img.shields.io/github/repo-size/oaokm/AL-Khatma)
 --| --| -- | --| 
 
+> **رسالة إلى جميع**: في حال إستخدامك للمكتبة عندما يظهر لك أي مشكلة(أخطاء برمجية أو Error)، فضلًا وليس أمًرا قم [بالتبليغ عن مشكلة](https://github.com/oaokm/AL-Khatma/issues/new/choose). هذا يساعدني في تطوير المكتبة ومعرفة المشاكل. خصوصًا عندما يتعلق ببنية نظام التشغيل. يعني ذلك، أن بنية نظام تشغيل لينكس يختلف تمامًا عن ويندوز، وربما يختلف عن نظام الماكنتوش الخاص بأبل.ففضلًا وتكرمًا في حال وجود مشكلة الرجاء [التبليغ عن المشكلة في صفحة المشكلات](https://github.com/oaokm/AL-Khatma/issues). وشكرًا لك. 
 
 ## **بيان**
 في يوم الثالث من أبريل من عام 2023 الموافق الثاني عشر من رمضان لعام 1444 هـ في هذا اليوم بدأت الفكرة وبعدها قمت بتطبيق الفكرة وبناء أول API لي.
