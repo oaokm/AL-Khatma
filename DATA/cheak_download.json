@@ -16,7 +16,8 @@
             "Language/ur.json",
             "Tafser/mukhtasar.json",
             "Tafser/muyassar.json",
-            "Adkar/adkar.json"
+            "Adkar/adkar.json",
+            "path_system.json"
         ]
     },
     {
