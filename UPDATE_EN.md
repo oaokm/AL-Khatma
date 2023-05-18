@@ -6,7 +6,7 @@
 
 <a href="https://github.com/oaokm/AL-Khatma/blob/main/README_EN.md"> ⬅️ Back to README </a>
 
-## **What's new in update (2.0.2)🌟**
+## **What's new in update (2.0.3)🌟**
 <ol>
   <li>Fixed a bug in the system for verifying important files in Windows systems;  The reason is due to the different path system in Windows</li>
    <li>An automatic system has been developed to find out the main information of the operating system, and to know the system paths for the system</li>
